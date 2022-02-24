@@ -14,8 +14,9 @@ public class MarkdownParseTestLab8 {
     @Test
     public void testSnippet1() throws IOException{
         ArrayList<String> linkTester = new ArrayList<>();
-        linkTester.add("https://something.com");
-        linkTester.add("some-page.html");
+        linkTester.add("google.com");
+        linkTester.add("google.com");
+        linkTester.add("ucsd.edu");
 
         Path fileName = Path.of("test-snippet1.md");
 	    String contents = Files.readString(fileName);
@@ -26,8 +27,9 @@ public class MarkdownParseTestLab8 {
     @Test
     public void testSnippet2() throws IOException{
         ArrayList<String> linkTester = new ArrayList<>();
-        linkTester.add("https://something.com");
-        linkTester.add("some-page.html");
+        linkTester.add("a.com");
+        linkTester.add("a.com(())");
+        linkTester.add("example.com");
 
         Path fileName = Path.of("test-snippet2.md");
 	    String contents = Files.readString(fileName);
@@ -38,8 +40,9 @@ public class MarkdownParseTestLab8 {
     @Test
     public void testSnippet3() throws IOException{
         ArrayList<String> linkTester = new ArrayList<>();
-        linkTester.add("https://something.com");
-        linkTester.add("some-page.html");
+        linkTester.add("https://twitter.com");
+        linkTester.add("https://ucsd-cse15l-w22.github.io/");
+        linkTester.add("https://cse.ucsd.edu/");
 
         Path fileName = Path.of("test-snippet3.md");
 	    String contents = Files.readString(fileName);

@@ -4,7 +4,7 @@ runner = org.junit.runner.JUnitCore
 test: MarkdownParse.class MarkdownParseTest.class
 	java -cp ${classpath} ${runner} MarkdownParseTest
 
-lab8: MarkdownParse.calss MarkdownParseTestLab8.class
+lab8: MarkdownParse.class MarkdownParseTestLab8.class
 	java -cp ${classpath} ${runner} MarkdownParseTestLab8
 
 MarkdownParse.class: MarkdownParse.java
