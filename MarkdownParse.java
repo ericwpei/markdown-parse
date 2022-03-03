@@ -72,6 +72,11 @@ public class MarkdownParse {
         }
         else {
             Path p = dirOrFile.toPath();
+            String contents = Files.readString(p);
+            if(contents.indexOf("[") != -1 && contents.indexOf("]") != -1
+                && contents.indexOf("(") != -1 && contents.indexOf(")") != -1){
+                System.out.println(p + " could have link");
+            }
             int lastDot = p.toString().lastIndexOf(".");
             if(lastDot == -1 || !p.toString().substring(lastDot).equals(".md")) {
                 return result;
