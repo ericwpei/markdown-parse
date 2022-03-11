@@ -1,17 +1,18 @@
 import org.commonmark.node.*;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
+import java.util.*;
 
 class TryCommonMark{
     public static void main(String[] args){
         Parser parser = Parser.builder().build();
-        Node document = parser.parse("This is *Sparta*");
+        Node document = parser.parse("[link](https://www.youtube.com)");
         HtmlRenderer renderer = HtmlRenderer.builder().build();
         renderer.render(document);  // "<p>This is <em>Sparta</em></p>\n"
         Node node = parser.parse("Example\n=======\n\nSome more text");
-        WordCountVisitor visitor = new WordCountVisitor();
+        LinkCountVisitor visitor = new LinkCountVisitor();
         node.accept(visitor);
-        System.out.println(visitor.wordCount);
+        System.out.println(visitor.linkCount);
     }
 }
 
@@ -29,3 +30,19 @@ class WordCountVisitor extends AbstractVisitor {
         visitChildren(text);
     }
 }
+
+class LinkCountVisitor extends AbstractVisitor {
+    ArrayList<String> linkCount = new ArrayList<>();
+
+    @Override
+    public void visit(Link text) {
+        // This is called for all Text nodes. Override other visit methods for other node types.
+
+        // Count words (this is just an example, don't actually do it this way for various reasons).
+        linkCount.add(text.getDestination());
+
+        // Descend into children (could be omitted in this case because Text nodes don't have children).
+        visitChildren(text);
+    }
+}
+
